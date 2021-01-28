@@ -1,6 +1,6 @@
 /**
- * Spore 1 
- * by Mike Davis. 
+ * Creative Embedded Systems Generative Art
+ * by Chianna Cohen derived from Spore 1 examble by Mike Davis 
  * 
  * A short program for alife experiments. Click in the window to restart.
  * Each cell is represented by a pixel on the display as well as an entry in
@@ -15,14 +15,16 @@ int maxcells = 6700;
 Cell[] cells = new Cell[maxcells];
 color spore_color;
 // set lower for smoother animation, higher for faster simulation
-int runs_per_loop = 10000;
+int runs_per_loop = 1000;
 color black = color(0, 0, 0);
   
 void setup() {
-  size(640, 360);
+  fullScreen();
   frameRate(24);
   reset();
 }
+
+
 
 void reset() {
   clearScreen();  

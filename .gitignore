@@ -1,0 +1,5 @@
+# env holds API key
+env.json
+
+# mac info
+.DS_Store
