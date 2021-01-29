@@ -13,15 +13,17 @@ World w;
 int numcells = 0;
 int maxcells = 6700;
 Cell[] cells = new Cell[maxcells];
-color spore_color;
+color dust_color;
 // set lower for smoother animation, higher for faster simulation
 int runs_per_loop = 1000;
-color black = color(0, 0, 0);
+color background = color(66, 71, 64);
   
 void setup() {
   fullScreen();
+  //size(640, 360);
   frameRate(24);
   reset();
+  
 }
 
 
@@ -29,8 +31,47 @@ void setup() {
 void reset() {
   clearScreen();  
   w = new World();
-  spore_color = color(172, 255, 128);
+  
+  // if (w.getpix(cX, cY) == black) {
+  dust_color = color(254, 254, 230);
   seed();
+  
+  drawLights();
+}
+
+void drawLights() {
+  
+  // Light one from top left to bottom right 
+  int x1 = (int) random(displayWidth/2);
+  int y1 = 0;
+  int x2 = displayWidth;
+  int y2 =(int) random(displayHeight);
+  int x3 = displayWidth;
+  int y3 = displayHeight;
+  int x4 = (int) random(displayWidth);
+  int y4 = displayHeight;
+  
+  fill(250, 224, 44, 50);
+  quad(x1, y1, x2, y2, x3, y3, x4, y4);
+  
+  
+  //
+  x1 = (int) random(displayWidth/3, displayWidth);
+  y1 = 0;
+  x2 = x1 + 30;
+  y2 = 0;
+  
+  
+  x3 = (int) random(displayWidth);
+  y3 = displayHeight;
+  x4 = (int) random(displayWidth);
+  while (x4 + 40 > x3) {
+    x4 = (int) random(displayWidth);
+  }
+  y4 = displayHeight;
+  
+  fill(250, 242, 44, 70);
+  quad(x1, y1, x2, y2, x3, y3, x4, y4);
 }
 
 void seed() {
@@ -39,8 +80,8 @@ void seed() {
   {
     int cX = (int)random(width);
     int cY = (int)random(height);
-    if (w.getpix(cX, cY) == black) {
-      w.setpix(cX, cY, spore_color);
+    if (w.getpix(cX, cY) != dust_color) {
+      w.setpix(cX, cY, dust_color);
       cells[numcells] = new Cell(cX, cY);
       numcells++;
     }
@@ -53,6 +94,8 @@ void draw() {
     int selected = min((int)random(numcells), numcells - 1);
     cells[selected].run();
   }
+  
+  
 }
 
 void clearScreen() {
@@ -61,6 +104,7 @@ void clearScreen() {
 
 class Cell {
   int x, y;
+  
   Cell(int xin, int yin) {
     x = xin;
     y = yin;
@@ -83,16 +127,16 @@ class Cell {
     }
     
     // Cell instructions
-    if (w.getpix(x + 1, y) == black) {
+    if (w.getpix(x + 1, y) != dust_color ) {
       move(0, 1);
-    } else if (w.getpix(x, y - 1) != black && w.getpix(x, y + 1) != black) {
+    } else if (w.getpix(x, y - 1) == dust_color && w.getpix(x, y + 1) == dust_color) {
       move((int)random(9) - 4, (int)random(9) - 4);
     }
   }
   
   // Will move the cell (dx, dy) units if that space is empty
   void move(int dx, int dy) {
-    if (w.getpix(x + dx, y + dy) == black) {
+    if (w.getpix(x + dx, y + dy) != dust_color) {
       w.setpix(x + dx, y + dy, w.getpix(x, y));
       w.setpix(x, y, color(0));
       x += dx;
