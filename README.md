@@ -62,7 +62,7 @@ Create a file called env.json. The .gitignore automatically ignores this file if
 }
 ```
 
-Edit sure to edit line 11 in weather_led.py file to match the location of your env.json file. The absolute file path is needed here for running on boot!
+Be sure to edit line 11 in weather_led.py file to match the location of your env.json file. The absolute file path is needed here for running on boot!
 
 
 ## Running on Boot
