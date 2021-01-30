@@ -17,6 +17,7 @@ color dust_color;
 // set lower for smoother animation, higher for faster simulation
 int runs_per_loop = 1000;
 color background = color(66, 71, 64);
+int start = millis();
   
 void setup() {
   fullScreen();
@@ -90,12 +91,15 @@ void seed() {
 
 void draw() {
   // Run cells in random order
-  for (int i = 0; i < runs_per_loop; i++) {
-    int selected = min((int)random(numcells), numcells - 1);
-    cells[selected].run();
+    for (int i = 0; i < runs_per_loop; i++) {
+      int selected = min((int)random(numcells), numcells - 1);
+      cells[selected].run();
+    }
+      
+  if (millis() > start + 6000) {
+       start = millis();
+       changeLights();
   }
-  
-  
 }
 
 void clearScreen() {
@@ -167,7 +171,7 @@ class World {
   }
 }
 
-void mousePressed() {
+void changeLights() {
   numcells = 0;
   reset();
 }

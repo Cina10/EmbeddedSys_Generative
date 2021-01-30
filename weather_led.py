@@ -12,7 +12,7 @@ with open("env.json", 'r') as env:
     env_var = json.loads(env.read())
     API_KEY = env_var['API_KEY']
 
-time.sleep(15)
+time.sleep(5)
 
 # locations can be passed as zip, country pairs, or sometimes by name.
 # I don't know why it sometimes didn't work one way or the other, so I've
@@ -99,7 +99,7 @@ while True:
     pixels.show()
 
     # dictated by wind speed
-    time.sleep(1/(wind_speed*2))
+    time.sleep(2/(wind_speed))
     if shift is not 7:
         shift += 1
     else:
