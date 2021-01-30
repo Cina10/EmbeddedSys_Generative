@@ -52,7 +52,7 @@ def calculate_colors(temp):
         b = 8
         step = -2 * temp + 225
         for i in range(8):
-            color_list.append((g, r, b, br))
+            color_list.append((g, r, b))
             g += step // 8
 
     # cool tones modulate red and green 
@@ -85,7 +85,7 @@ colors = calculate_colors(temp)
 while True:
     shift = 0
     for i in range(8):
-        pixels[i] = colors[i + shift // 8]
+        pixels[i] = colors[(i + shift) // 8]
     pixels.show()
 
     # dictated by wind speed
