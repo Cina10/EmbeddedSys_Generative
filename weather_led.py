@@ -99,7 +99,7 @@ while True:
     pixels.show()
 
     # dictated by wind speed
-    time.sleep(2/(wind_speed))
+    time.sleep(10/(wind_speed))
     if shift is not 7:
         shift += 1
     else:
