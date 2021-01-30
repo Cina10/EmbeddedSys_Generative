@@ -85,7 +85,7 @@ colors = calculate_colors(temp)
 while True:
     shift = 0
     for i in range(8):
-        pixels[i] = colors[(i + shift) // 8]
+        pixels[i] = colors[ int(i + shift) // 8]
     pixels.show()
 
     # dictated by wind speed
