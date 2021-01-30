@@ -70,14 +70,14 @@ def calculate_colors(temp):
     # cold tones modulate blue
     else:
         g = 225
-        r = 79
+        r = 100
         b = int(temp) + 150
         for i in range(8):
             color_list.append((g, r, b))
             if b <= 225:
-                g -= 5
+                g -= 20
             else:
-                b -= 5
+                b -= 20
     return color_list
 
 
@@ -89,7 +89,7 @@ while True:
     pixels.show()
 
     # dictated by wind speed
-    time.sleep(0.005)
+    time.sleep(0.5)
     if shift is not 7:
         shift += 1
     else:
