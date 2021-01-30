@@ -26,7 +26,7 @@ I connected the input control signal(S) on the LED module to GPIO21 on the Pi, t
 
 Here is a photo of my setup: 
 
-![Wiring](wiring.png)
+![Wiring](wiring.png| width=100)
 
 Here, red is power, black is ground, and brown is signal.
 
