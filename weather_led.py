@@ -8,7 +8,7 @@ pixels = neopixel.NeoPixel(board.D21, 8, brightness=0.1, auto_write=False, pixel
 
 # make a env file to store your API key!
 API_KEY = None
-with open("env.json", 'r') as env:
+with open("/home/pi/Documents/CES/Project_1/env.json", 'r') as env:
     env_var = json.loads(env.read())
     API_KEY = env_var['API_KEY']
 
@@ -40,8 +40,6 @@ if response.status_code == 200:
 
     # wind_speed modulates rate at which the lights change
     wind_speed = city_weather_dict['wind']['speed']
-    print(wind_speed)
-
 
 # returns a list of colors
 def calculate_colors(temp):
@@ -95,7 +93,7 @@ while True:
     for i in range(8):
         pixels[i] = colors[(i + shift) % 7]
     pixels[shift] = (0, 0, 0)
-    pixels[(shift + 4 )% 7] = darken(colors[shift])
+    pixels[(shift + 4)% 7] = darken(colors[shift])
     pixels.show()
 
     # dictated by wind speed
