@@ -20,11 +20,13 @@ A detailed guide to setting up the wiring can be found [here](https://learn.adaf
 
 Here is a diagram of the Raspberry Pi 4B pinout: 
 
+![Pinout](RaspberryPiPinout.png)
 
 I connected the input control signal(S) on the LED module to GPIO21 on the Pi, the input power supply pin(V) on the LED module to 5V on the Pi, and the input ground(G) on the LED module to ground on the PI. 
 
 Here is a photo of my setup: 
 
+![Wiring](wiring.png)
 
 If GPIO18 works for your code instead of GPIO21, you also have to change code on line 7 in the weather_led.py file as follows
 ```
