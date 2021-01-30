@@ -82,8 +82,9 @@ def calculate_colors(temp):
 
 
 colors = calculate_colors(temp)
+shift = 0
 while True:
-    shift = 0
+
     for i in range(8):
         #if shift // 2 is 0:
 
