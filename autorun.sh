@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-processing-java --sketch='/home/pi/Desktop/project1/collisions' --run &
-sudo python3 /home/pi/Desktop/project1/collisions/script.py &
+processing-java --sketch='/home/pi/Documents/CES/Project_1/' --run &
+sudo python3 /home/pi/Documents/CES/Project_1/weather_led.py &
