@@ -28,6 +28,8 @@ Here is a photo of my setup:
 
 ![Wiring](wiring.png)
 
+Here, red is power, black is ground, and brown is signal.
+
 If GPIO18 works for your code instead of GPIO21, you also have to change code on line 7 in the weather_led.py file as follows
 ```
 pixels = neopixel.NeoPixel(board.D18, 8, brightness=0.1, auto_write=False, pixel_order=neopixel.RGB)
