@@ -95,7 +95,7 @@ while True:
     for i in range(8):
         pixels[i] = colors[(i + shift) % 7]
     pixels[shift] = (0, 0, 0)
-    pixels[shift + 4 % 7] = darken(colors[shift])
+    pixels[(shift + 4 )% 7] = darken(colors[shift])
     pixels.show()
 
     # dictated by wind speed
