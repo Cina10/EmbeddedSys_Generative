@@ -4,7 +4,7 @@ import board
 import neopixel
 import time
 
-pixels = neopixel.NeoPixel(board.D21, 8, brightness=0.1, auto_write=False, pixel_order=neopixel.RGBW)
+pixels = neopixel.NeoPixel(board.D21, 8, brightness=0.1, auto_write=False, pixel_order=neopixel.RGB)
 
 # make a env file to store your API key!
 API_KEY = None
@@ -44,7 +44,7 @@ if response.status_code == 200:
 # returns a list of colors
 def calculate_colors(temp):
     color_list = []
-    br = 170
+
     # warm tones modulate G140->215 R215 B8
     if temp > 70:
         g = 140
@@ -63,7 +63,7 @@ def calculate_colors(temp):
 
         step = -(3 / 5) * temp + 44
         for i in range(8):
-            color_list.append((g, r, b, br))
+            color_list.append((g, r, b))
             r -= step // 8
             b += 246 // 8
 
@@ -73,7 +73,7 @@ def calculate_colors(temp):
         r = 79
         b = temp + 150
         for i in range(8):
-            color_list.append((g, r, b, br))
+            color_list.append((g, r, b))
             if b <= 225:
                 g -= 5
             else:
