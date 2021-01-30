@@ -71,7 +71,7 @@ def calculate_colors(temp):
     else:
         g = 225
         r = 79
-        b = temp + 150
+        b = int(temp) + 150
         for i in range(8):
             color_list.append((g, r, b))
             if b <= 225:
@@ -85,7 +85,7 @@ colors = calculate_colors(temp)
 while True:
     shift = 0
     for i in range(8):
-        pixels[i] = colors[ int(i + shift) // 8]
+        pixels[i] = colors[i + shift // 8]
     pixels.show()
 
     # dictated by wind speed
