@@ -47,10 +47,10 @@ def calculate_colors(temp):
 
     # warm tones modulate G140->215 R215 B8
     if temp > 70:
-        g = 140
+        g = 190 - int(temp)
         r = 215
         b = 8
-        step = -2 * temp + 225
+        step = 35
         for i in range(8):
             color_list.append((g, r, b))
             g += step // 8
@@ -81,15 +81,19 @@ def calculate_colors(temp):
     return color_list
 
 
+def darken(color):
+    for i in color:
+        return i - 40
+
+
 colors = calculate_colors(temp)
 shift = 0
 while True:
 
     for i in range(8):
-        #if shift // 2 is 0:
-
-        pixels[i] =  colors[i + shift // 8]
-        pixels[shift] = (0,0,0)
+        pixels[i] = colors[(i + shift) % 7]
+    pixels[shift] = (0, 0, 0)
+    pixels[shift + 4 % 7] = darken(colors[shift])
     pixels.show()
 
     # dictated by wind speed
