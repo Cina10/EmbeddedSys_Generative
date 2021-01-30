@@ -12,6 +12,8 @@ with open("env.json", 'r') as env:
     env_var = json.loads(env.read())
     API_KEY = env_var['API_KEY']
 
+time.sleep(15)
+
 # locations can be passed as zip, country pairs, or sometimes by name.
 # I don't know why it sometimes didn't work one way or the other, so I've
 # just hard coded some cities for testing purposes
