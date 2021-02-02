@@ -2,11 +2,6 @@
  * Creative Embedded Systems Generative Art
  * by Chianna Cohen derived from Spore 1 examble by Mike Davis 
  * 
- * A short program for alife experiments. Click in the window to restart.
- * Each cell is represented by a pixel on the display as well as an entry in
- * the array 'cells'. Each cell has a run() method, which performs actions
- * based on the cell's surroundings.  Cells run one at a time (to avoid conflicts
- * like wanting to move to the same space) and in random order.
  */
 
 World w;
